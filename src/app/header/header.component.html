@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/assets/images/quran.svg" alt="" width="34" height="30" class="d-inline-block align-text-top">
+          My Quran
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">What is Islam ?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">The Noble Quran</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" (click)="retrieveSurahList()">Choose a surah</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div *ngIf="selectSurah && surahList">
+    <select (change)="selectChangeHandler($event)" style="margin-top: 5%;width: 14rem;" class="container d-flex justify-content-center form-select">
+      <option selected>Choose a surah.</option>;
+      <option *ngFor="let surah of surahList" value="{{surah.surah_number}}"> {{surah.surah_name}}</option>
+    </select>
+  </div>
+
+
+  <div *ngIf="displaySurah">
+    <table class="space container table">
+      <tbody>
+        <tr *ngFor="let aya of surah">
+          <td>{{aya.aya_number}}</td>
+          <td>{{aya.verse}}</td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
